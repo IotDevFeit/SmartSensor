@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:xamarin="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LightSensor.Views.Dashboard"
+              BackgroundColor="WhiteSmoke">
+
+    <StackLayout>
+        <Label Text="Connected PSL 's : " 
+               FontFamily="IgnaSansRegular"
+               TextColor="Blue"
+               FontSize="18"
+               Margin="8,10,0,10"/>
+
+        <CollectionView x:Name="espView"
+                        Margin="8"
+                        BackgroundColor="WhiteSmoke"
+                        VerticalOptions="FillAndExpand"
+                        SelectionMode="Single"
+                        SelectedItem="null"
+                        ItemsUpdatingScrollMode="KeepItemsInView"
+                        SelectionChanged="espView_SelectionChanged"
+                        >
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalOptions="Fill">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <!--<Frame CornerRadius="8"
+                           BorderColor="{StaticResource Primary}"
+                           Padding="5"
+                           IsClippedToBounds="False"
+                           Margin="8,0,8,0"
+                           BackgroundColor="White"
+                            HasShadow="True">-->
+                        <!--<Frame.GestureRecognizers >
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Frame.GestureRecognizers>-->
+                        <Border Padding="8">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10"/>
+                            </Border.StrokeShape>
+                            <Border.Shadow >
+                                <Shadow Brush="gray"
+                            Offset="5,10"/>
+
+                            </Border.Shadow>
+                            <Grid Padding="0"
+                              RowSpacing="-15"
+                              RowDefinitions="auto,auto"
+                              ColumnDefinitions="auto,*">
+                            <Image Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.RowSpan="2"
+                                   HorizontalOptions="CenterAndExpand"
+                                   HeightRequest="80"
+                                   WidthRequest="80"
+                                   Margin="16,0,16,0"
+                                   Source="wifi_router_off.png">
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image"
+                                 Binding="{Binding IsActive}"
+                                 Value="True">
+                                        <Setter Property="Source"
+                                Value="wifi_router_on.png"/>
+
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                            <Image Grid.Column="0"
+                                   IsVisible="False"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start"
+                                   Margin="8"
+                                   Source="red_dot.png"
+                                   HeightRequest="15"
+                                   WidthRequest="15">
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image"
+                                 Binding="{Binding IsActive}"
+                                 Value="True">
+                                        <Setter Property="Source"
+                                Value="green_dot.png"/>
+
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   FontFamily="IgnaSansRegular" 
+                                   TextColor="#0047ba"
+                                   FontSize="16"
+                                   Text="{Binding Name}"/>
+                            <Label Grid.Row="1" 
+                                   Grid.Column="1"
+                                   FontFamily="RobotoRegular"
+                                   TextColor="DarkSlateGray"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Connected to: "/>
+                                            <Span Text="{Binding SSID}"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+                        </Border>
+                        
+                    <!--</Frame>-->
+                    </Grid>
+                   
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!--<ListView ItemsSource="{Binding espList}"
+                  x:Name="espView"
+                  HasUnevenRows="True" 
+                  Margin="5,15,5,15"
+                  >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <Frame CornerRadius="8"
+                               BorderColor="DodgerBlue">
+                            
+                        
+                        <Grid Padding="1"
+                              RowSpacing="2"
+                              RowDefinitions="*,*"
+                              ColumnDefinitions="*,*">
+                            <Image Grid.Row="0"
+                                       Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                       HorizontalOptions="Start"
+                                       HeightRequest="50"
+                                       WidthRequest="50"
+                                       Source="dotnet_bot.svg"/>
+                            <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   
+                                       TextColor="Black"
+                                       Text="{Binding Name}"/>
+                            <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       TextColor="Black"
+                                       HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                       Text="{Binding SSID}"/>
+                        </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+    </StackLayout>
+</ContentPage>

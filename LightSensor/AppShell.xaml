@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="LightSensor.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LightSensor"
+    xmlns:local1="clr-namespace:LightSensor.Views"
+    Shell.FlyoutBehavior="Flyout" 
+    FlyoutBackgroundColor="#FBFBFB">
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="auto,*"
+                  Padding="0"
+                  Margin="5">
+                <Image Grid.Column="0"
+                       Source="logo.png" 
+                       Aspect="Fill"
+                       HeightRequest="50"
+                       WidthRequest="50"
+                       Margin="2"
+                       />
+                <Label Grid.Column="1"
+                       Text="Proto Smart Lux" 
+                       FontSize="26"
+                       HeightRequest="50"
+                       TextColor="#0047ba"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        
+    </Shell.FlyoutHeaderTemplate>
+    <Shell.FlyoutFooter>
+        <Label Text="Proto smart lux @2022"
+               Margin="0,0,0,0"
+               HeightRequest="50"
+               FontSize="18"
+               TextColor="Black"
+               BackgroundColor="Transparent"
+               VerticalOptions="Fill"
+               HorizontalOptions="CenterAndExpand"
+               HorizontalTextAlignment="Center"/>
+        
+    </Shell.FlyoutFooter>
+    <!--<Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Image Source="esp_img.svg"
+                       Margin="5"
+                       HeightRequest="45" 
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+                <Label Grid.Column="1"
+                       Grid.Row="0"
+                       Text="Dashboard"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center" />
+               
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>-->
+    <FlyoutItem Title="Dashboard"  FlyoutIcon="home.png">
+        <ShellContent
+                Title="Dashboard"
+                ContentTemplate="{DataTemplate local1:Dashboard}"
+                Route="Dashboard" />
+    </FlyoutItem>
+    <FlyoutItem Title="PSL Network's" FlyoutIcon="network.png">
+        <ShellContent
+                Title="PSL Network's"
+                ContentTemplate="{DataTemplate local1:Connection}"
+                Route="ConnectionToEsp" />
+    </FlyoutItem>
+    <MenuItem Text="About" IconImageSource="about.png" />
+
+
+</Shell>

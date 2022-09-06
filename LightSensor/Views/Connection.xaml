@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LightSensor.Views.Connection"
+             Title="Connect to PSL"
+             BackgroundColor="WhiteSmoke">
+    <Grid Padding="5"
+          ColumnDefinitions="auto,*"
+          RowDefinitions="35,auto,*">
+
+        <Label Grid.Row="0" 
+               Grid.Column="0" 
+               Text="Search for PSL network:" 
+               BackgroundColor="Transparent"
+               FontFamily="OpenSansSemibold"
+               FontSize="18" 
+               Margin="8,0,0,0"
+               TextColor="#0047ba"
+               VerticalTextAlignment="Center"
+               VerticalOptions="CenterAndExpand"/>
+        <Button Grid.Row="0" 
+                Grid.Column="1"
+                Text="+"
+                TextColor="White"
+                FontSize="20"
+                Padding="0"
+                VerticalOptions="Center" 
+                FontFamily="IngaSansBold"
+                HorizontalOptions="CenterAndExpand"
+                WidthRequest="55"
+                HeightRequest="30"
+                CornerRadius="30" 
+                BackgroundColor="#0047ba"/>
+        <Frame BackgroundColor="White"
+               CornerRadius="10" Margin="10"
+               Grid.Row="1"
+               HasShadow="True"
+              Grid.Column="0"
+              Grid.ColumnSpan="2">
+             <Grid
+              ColumnSpacing="5"
+              HorizontalOptions="Fill"
+              ColumnDefinitions="auto,*" 
+              RowDefinitions="auto,auto,auto,auto"
+              IsVisible="true">
+                <Label Grid.Row="0" 
+                       Grid.Column="0" 
+                       FontFamily="OpenSansSemibold"
+                       FontSize="15"
+                       VerticalTextAlignment="Center"
+                       Text="Name: "/>
+                <Entry Grid.Row="0" 
+                       VerticalOptions="Start"
+                       Grid.Column="1" 
+                       FontFamily="IngaSansMedium"
+                       FontAttributes="Italic"
+                       Placeholder="Esp Name"/>
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       FontFamily="IgnaSansBold"
+                       FontSize="15"
+                       VerticalTextAlignment="Center"
+                       Text="SSID: "/>
+                <Entry Grid.Row="1"
+                       Grid.Column="1" 
+                       FontFamily="IngaSansMedium"
+                       FontAttributes="Italic"
+                       Placeholder="Set your SSID"/>
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       VerticalTextAlignment="Center"
+                       FontFamily="IgnaSansBold"
+                       FontSize="15"
+                       Text="Password: "/>
+                <Entry Grid.Row="2"
+                       Grid.Column="1" 
+                       FontFamily="IngaSansMedium"
+                       FontAttributes="Italic"
+                       Placeholder="Password"/>
+                <Button Grid.Row="3"
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Text="Submit Changes"
+                        Margin="0,0,8,0"
+                        FontFamily="OpenSansSemibold"
+                        LineBreakMode="TailTruncation"
+                        HorizontalOptions="EndAndExpand"
+                        BackgroundColor="#0047ba"/>
+
+
+            </Grid>
+        </Frame>
+
+        <Grid Grid.Row="2"
+              Grid.Column="0"
+              Grid.ColumnSpan="2" Padding="1">
+            <WebView Source="https://docs.microsoft.com/dotnet/maui"
+                     Margin="10"/>
+
+        </Grid>
+       
+    </Grid>
+</ContentPage>
